@@ -13,7 +13,7 @@ import PosterFallback from "../../assets/no-poster.png";
 import Genres from "../genres/Genres";
 import "./style.scss";
 
-const Carousel = ({ data, loading, endPoint }) => {
+const Carousel = ({ data, loading, endPoint , title}) => {
     const carouselContainer = useRef();
     const {url} = useSelector((state) => state.home);
     const navigate = useNavigate();
@@ -41,6 +41,7 @@ const Carousel = ({ data, loading, endPoint }) => {
     return (
         <div className="carousel">
             <ContentWrapper>
+                {title && <div className="carouselTitle">{title}</div>}
                 <BsFillArrowLeftCircleFill className="carouselLeftNav arrow" onClick={() => navigation("left")} />
 
                 <BsFillArrowRightCircleFill className="carouselRighttNav arrow" onClick={() => navigation("right")} />
@@ -48,7 +49,7 @@ const Carousel = ({ data, loading, endPoint }) => {
                 {!loading ? (
                     <div className="carouselItems" ref={carouselContainer}>
                         
-                        {data.map((item) => {
+                        {data?.map((item) => {
                             const posterUrl = item.poster_path ? url.poster + item.poster_path : PosterFallback;
 
                             return (
