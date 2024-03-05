@@ -1,4 +1,5 @@
 import { useState,useEffect } from "react"
+import {lazy, Suspense} from 'react'
 import fetchDataFromApi from './utils/api'
 import { useDispatch, useSelector } from "react-redux";
 import { getApiConfiguration, getGenres } from "./store/homeSlice";
@@ -6,7 +7,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Home from "./pages/home/Home";
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
-import Detils from './pages/details/Details'
+// import Detils from './pages/details/Details'
 import Explore from './pages/explore/Explore'
 import Error from './pages/404/Error'
 import SearchResult from './pages/searchResult/SearchResult'
@@ -50,12 +51,15 @@ function App() {
         dispatch(getGenres(allGenres))
     }
 
+    const Details = lazy(()=> import('./pages/details/Details'))
+    // const SearchResult = lazy(()=> import('./pages/explore/Explore'))
+
   return (
     <BrowserRouter>
     <Header/>
         <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/:mediaType/:id" element={<Detils/>}/>
+            <Route path="/:mediaType/:id" element={<Suspense fallback={"Laxy Loading "}><Details/></Suspense>}/>
             <Route path="/search/:query" element={<SearchResult/>}/>
             <Route path="/explore/:mediaType" element={<Explore/>}/>
             <Route path="*" element={<Error/>}/>

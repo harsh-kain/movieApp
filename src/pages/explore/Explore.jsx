@@ -34,6 +34,7 @@ const Explore = () => {
     const { mediaType } = useParams();
 
     const { data: genresData } = useFetch(`/genre/${mediaType}/list`);
+    
 
     const fetchInitialData = () => {
         setLoading(true);
@@ -71,6 +72,7 @@ const Explore = () => {
     }, [mediaType]);
 
     const onChange = (selectedItems, action) => {
+
         if (action.name === "sortby") {
             setSortby(selectedItems);
             if (action.action !== "clear") {
@@ -105,6 +107,7 @@ const Explore = () => {
                             : "Explore Movies"}
                     </div>
                     <div className="filters">
+
                         <Select
                             isMulti
                             name="genres"
@@ -118,6 +121,7 @@ const Explore = () => {
                             className="react-select-container genresDD"
                             classNamePrefix="react-select"
                         />
+                        
                         <Select
                             name="sortby"
                             value={sortby}

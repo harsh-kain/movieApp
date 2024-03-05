@@ -6,12 +6,12 @@ import Popular from './popular/Popular'
 import TopRated from './topRated/TopRated'
 const Home = () => {
   return (
+      // <h1>Home page</h1>
     <div className='homePage'>
       <Banner />
       <Trending />
       <Popular />
       <TopRated />
-      {/* <div style={{height: 1000}}></div> */}
     </div>
   )
 }
