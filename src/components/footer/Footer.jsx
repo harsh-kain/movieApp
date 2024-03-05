@@ -5,10 +5,10 @@ import {
     FaTwitter,
     FaLinkedin,
 } from "react-icons/fa";
-
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 
 import "./style.scss";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -22,7 +22,7 @@ const Footer = () => {
                     <li className="menuItem">FAQ</li>
                 </ul>
                 <div className="infoText">
-                    <h1>Developed by <span>#Kain</span></h1>
+                    <h3>Developed by <Link to={"https://harsh-kain.github.io/portfolio_new/"}><span className="link"># Kain</span></Link></h3>
                 </div>
                 <div className="socialIcons">
                     <span className="icon">
