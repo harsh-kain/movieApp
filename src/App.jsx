@@ -14,7 +14,6 @@ import SearchResult from './pages/searchResult/SearchResult'
 
 function App() {
     const dispatch = useDispatch();
-    // const selector = useSelector();
     const {url} = useSelector((state) => state.home)
 
     useEffect(() =>{
@@ -52,6 +51,7 @@ function App() {
     }
 
     const Details = lazy(()=> import('./pages/details/Details'))
+    // implmenet lazy loading further 
     // const SearchResult = lazy(()=> import('./pages/explore/Explore'))
 
   return (
